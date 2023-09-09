@@ -10,7 +10,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/koa": "^2.13.8",
     "@types/node": "^20.6.0",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "koa": "^2.14.2"
   }
 }
