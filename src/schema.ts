@@ -19,7 +19,11 @@ const tools: Tool[] = [
 
 const typeDefinitions = `
   type Query {
-    tool: Tool!
+    tool: [Tool]!
+  }
+  
+  type Mutation {
+    createTool(title: String!, link: String!, description: String!): Tool!
   }
 
   type Tool {
@@ -32,7 +36,23 @@ const typeDefinitions = `
 
 const resolvers = {
   Query: {
-    tool: () => tools[0],
+    tool: () => tools,
+  },
+  Mutation: {
+    createTool: (
+      parent: unknown,
+      args: { title: string; link: string; description: string }
+    ) => {
+      let idTool = tools.length + 1;
+      const tool: Tool = {
+        id: idTool,
+        title: args.title,
+        link: args.link,
+        description: args.description,
+      };
+      tools.push(tool);
+      return tool;
+    },
   },
   Tool: {
     id: (parent: Tool) => parent.id,
