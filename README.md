@@ -18,6 +18,7 @@ git clone  https://github.com/LuisDomiciano/vuttr-graphql-api.git
 ```
 
 ```
+npm ci
 npm run dev
 ```
 
